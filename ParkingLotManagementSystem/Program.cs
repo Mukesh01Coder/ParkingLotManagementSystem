@@ -1,5 +1,8 @@
 ﻿using ParkingLotManagementSystem.Models.Enums;
 using ParkingLotManagementSystem.Models;
+using ParkingLotManagementSystem.Repositories;
+using ParkingLotManagementSystem.Services;
+using ParkingLotManagementSystem.Controllers;
 
 BillRepository billRepository = new BillRepository();
 ParkingLotRepository parkingLotRepository = new ParkingLotRepository(); // initialised a parkingLotRepo object, available for injection
@@ -11,8 +14,10 @@ VehicleRepository vehicleRepository = new VehicleRepository();
 
 ParkingLotService parkingLotService = new ParkingLotService(parkingLotRepository,
         parkingFloorRepository, parkingSpotRepository, parkingGateRepository); // initialising parkingLotService, ie, while object creation the dependency will be injected
+
 TicketService ticketService = new TicketService(parkingGateRepository,
         parkingTicketRepository, parkingSpotRepository, parkingLotRepository, vehicleRepository);
+
 BillService billService = new BillService(parkingTicketRepository,
         billRepository, parkingGateRepository, parkingSpotRepository, parkingLotRepository);
 
@@ -23,35 +28,35 @@ BillController billController = new BillController(billService);
 ParkingLot parkingLot = parkingLotController.initialiseParkingLot(1, 3);
 parkingLotController.displayParkingLot(parkingLot);
 
-Scanner sc = new Scanner(System.in);
+StreamReader sc = new StreamReader(Console.OpenStandardInput());
 
-System.out.println("Welcome to Parking Lot system");
+Console.WriteLine("Welcome to Parking Lot system");
 
 while (true)
 {
-    System.out.println("Choose one of the following : ");
-    System.out.println("1. Enter new vehicle");
-    System.out.println("2. Exit vehicle");
-    int option = sc.nextInt();
+    Console.WriteLine("Choose one of the following : ");
+    Console.WriteLine("1. Enter new vehicle");
+    Console.WriteLine("2. Exit vehicle");
+    int option = Convert.ToInt32(sc.ReadLine());
     if (option == 1)
     {
         if (parkingLotController.isSlotAvailable(parkingLot))
         {
-            System.out.println("Please enter vehicle number");
-            String number = sc.next();
+            Console.WriteLine("Please enter vehicle number");
+            string number = sc.ReadLine();
             ParkingTicket ticket = ticketController.generateTicket(parkingLot, number, ParkingSpotTier.NORMAL, 1);
             ticketController.displayTicketDetails(ticket);
             parkingLotController.displayParkingLot(parkingLot);
         }
         else
         {
-            System.out.println("Parking Lot is full, please try again later");
+           Console.WriteLine("Parking Lot is full, please try again later");
         }
     }
     else
     {
-        System.out.println("Please enter your ticketId");
-        int ticketId = sc.nextInt();
+        Console.WriteLine("Please enter your ticketId");
+        int ticketId = Convert.ToInt32(sc.ReadLine());
         Bill bill = billController.generateBill(parkingLot, ticketId, 2);
         billController.displayBillDetails(bill);
         parkingLotController.displayParkingLot(parkingLot);

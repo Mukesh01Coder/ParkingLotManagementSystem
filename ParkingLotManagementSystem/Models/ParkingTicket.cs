@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace ParkingLotManagementSystem.Models
 {
     public class ParkingTicket
     {
         private int id;
         private ParkingSpot parkingSpot;
-        private LocalDateTime entryTime;
+        private DateTime entryTime;
         private Vehicle vehicle;
         private ParkingGate gate;
         private Operator operatorDetails;
@@ -18,16 +13,16 @@ namespace ParkingLotManagementSystem.Models
 
        
     public string toString()
-        {
-            return "ParkingTicket{" +
-                    "ticket Id=" + id +
-                    "parkingSpot=" + parkingSpot.getParkingSpotNumber() +
-                    ", entryTime=" + entryTime +
-                    ", vehicle=" + vehicle.getVehicleNumber() +
-                    ", gate=" + gate.getGateNumber() +
-                    ", operator=" + operatorDetails.getName() +
-                    '}';
-        }
+    {
+        return "ParkingTicket{" +
+                "ticket Id=" + id +
+                "parkingSpot=" + parkingSpot.getParkingSpotNumber() +
+                ", entryTime=" + entryTime +
+                ", vehicle=" + vehicle.getVehicleNumber() +
+                ", gate=" + gate.getGateNumber() +
+                ", operator=" + operatorDetails.getName() +
+                '}';
+    }
 
         public int getId()
         {

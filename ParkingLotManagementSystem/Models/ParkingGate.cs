@@ -1,4 +1,6 @@
-﻿namespace ParkingLotManagementSystem.Models
+﻿using ParkingLotManagementSystem.Models.Enums;
+
+namespace ParkingLotManagementSystem.Models
 {
     public class ParkingGate
     {

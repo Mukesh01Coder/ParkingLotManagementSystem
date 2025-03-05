@@ -1,9 +1,11 @@
-﻿namespace ParkingLotManagementSystem.Models
+﻿using ParkingLotManagementSystem.Models.Enums;
+
+namespace ParkingLotManagementSystem.Models
 {
     public class ParkingSpot
     {
         private int id;
-        private String parkingSpotNumber;
+        private string parkingSpotNumber;
         private ParkingSpotStatus spotStatus;
         private VehicleType vehicleTypeSupported;
         private ParkingSpotTier parkingSpotTier;

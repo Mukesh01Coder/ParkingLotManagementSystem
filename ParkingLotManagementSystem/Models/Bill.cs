@@ -34,12 +34,12 @@
 
         public Operator getOperator()
         {
-            return operator;
+            return operatorDetails;
         }
 
-        public void setOperator(Operator operator)
+        public void setOperator(Operator operatorDetails)
         {
-            this.operator = operator;
+            this.operatorDetails = operatorDetails;
         }
 
         public int getId()
@@ -52,12 +52,12 @@
             this.id = id;
         }
 
-        public LocalDateTime getExitTime()
+        public DateTime getExitTime()
         {
             return exitTime;
         }
 
-        public void setExitTime(LocalDateTime exitTime)
+        public void setExitTime(DateTime exitTime)
         {
             this.exitTime = exitTime;
         }
